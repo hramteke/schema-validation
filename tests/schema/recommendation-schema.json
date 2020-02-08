@@ -1,0 +1,872 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "$namespace",
+    "$resolutions",
+    "$issues"
+  ],
+  "properties": {
+    "$namespace": {
+      "const": "wizards"
+    },
+    "$resolutions": {
+      "type": "array",
+      "title": "The $resolutions Schema",
+      "minItems": 1,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "items": {
+        "type": "string",
+        "title": "The Items Schema",
+        "enum": [
+          "all-set",
+          "change-shipping-address-or-info",
+          "open-a-ticket",
+          "internal-escalation-eu-only",
+          "send-parts",
+          "provide-repair",
+          "provide-discount",
+          "send-unit",
+          "provide-refund",
+          "return",
+          "cancel",
+          "warm-transfer"
+        ]
+      }
+    },
+    "$issues": {
+      "type": "object",
+      "properties": {
+        "wrong-product": {
+          "type": "object",
+          "required": [
+            "$metrics"
+          ],
+          "properties": {
+            "$evaluators": {
+              "type": "array",
+              "title": "The $evaluator Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "availability-evaluator",
+                  "customer-possession",
+                  "warm-transfer",
+                  "wrong-options",
+                  "same-item-check",
+                  "return-availability"
+                ]
+              }
+            },
+            "$defaultResolutionRank": {
+              "type": "array",
+              "title": "The $defaultResolutionRank Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "send-unit",
+                  "send-parts",
+                  "provide-discount",
+                  "return",
+                  "provide-refund",
+                  "all-set",
+                  "warm-transfer"
+                ]
+              }
+            },
+            "$metrics": {
+              "type": "object",
+              "required": [
+                "does-supplier-handle-customer",
+                "override-supplier-handles-customer",
+                "is-in-customers-possession",
+                "is-supplier-adc-and-ltl-or-white-glove",
+                "is-clearance-item",
+                "is-ebay-gsp",
+                "is-general-electric-item",
+                "is-employee-manager",
+                "is-outside-supplier-warranty",
+                "is-eu-order",
+                "is-item-post-1-year",
+                "is-item-post-2-years",
+                "is-heavy-item-european-supplier",
+                "is-specialized-ssc",
+                "has-payment-method",
+                "item-total-revenue",
+                "employee-override-refund-access",
+                "is-discontinued-partner",
+                "are-parts-provided",
+                "is-parts-eligible-for-custom-integration",
+                "is-discontinued",
+                "is-castlegate-only-item",
+                "is-out-of-stock-item",
+                "is-google-express-partner",
+                "has-no-live-source-sku",
+                "is-combined-kit-sku",
+                "is-replacement-eligible-for-custom-integration",
+                "employee-repair-resolution-access",
+                "is-repair-eligible-for-custom-integration",
+                "is-repairable-product-class",
+                "does-wholesale-price-meet-repair-minimum",
+                "does-partner-allow-discount",
+                "wizard-path",
+                "wrong-options-data",
+                "is-same-item",
+                "part-number",
+                "manufacturer-part-number",
+                "supplier-part-number",
+                "white-label-part-number",
+                "product-aspects",
+                "cant-verify"
+              ],
+              "properties": {
+                "cant-verify": {
+                  "$ref": "#/definitions/cant-verify"
+                },
+                "product-aspects": {
+                  "$ref": "#/definitions/product-aspects"
+                },
+                "white-label-part-number": {
+                  "$ref": "#/definitions/white-label-part-number"
+                },
+                "supplier-part-number": {
+                  "$ref": "#/definitions/supplier-part-number"
+                },
+                "manufacturer-part-number": {
+                  "$ref": "#/definitions/manufacturer-part-number"
+                },
+                "part-number": {
+                  "$ref": "#/definitions/part-number"
+                },
+                "is-same-item": {
+                  "$ref": "#/definitions/is-same-item"
+                },
+                "wrong-options-data": {
+                  "$ref": "#/definitions/wrong-options-data"
+                },
+                "wizard-path": {
+                  "$ref": "#/definitions/wizard-path"
+                },
+                "does-partner-allow-discount": {
+                  "$ref": "#/definitions/does-partner-allow-discount"
+                },
+                "does-wholesale-price-meet-repair-minimum": {
+                  "$ref": "#/definitions/does-wholesale-price-meet-repair-minimum"
+                },
+                "is-repairable-product-class": {
+                  "$ref": "#/definitions/is-repairable-product-class"
+                },
+                "is-repair-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-repair-eligible-for-custom-integration"
+                },
+                "employee-repair-resolution-access": {
+                  "$ref": "#/definitions/employee-repair-resolution-access"
+                },
+                "is-replacement-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-replacement-eligible-for-custom-integration"
+                },
+                "is-combined-kit-sku": {
+                  "$ref": "#/definitions/is-combined-kit-sku"
+                },
+                "has-no-live-source-sku": {
+                  "$ref": "#/definitions/has-no-live-source-sku"
+                },
+                "is-google-express-partner": {
+                  "$ref": "#/definitions/is-google-express-partner"
+                },
+                "is-out-of-stock-item": {
+                  "$ref": "#/definitions/is-out-of-stock-item"
+                },
+                "is-castlegate-only-item": {
+                  "$ref": "#/definitions/is-castlegate-only-item"
+                },
+                "is-discontinued": {
+                  "$ref": "#/definitions/is-discontinued"
+                },
+                "is-parts-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-parts-eligible-for-custom-integration"
+                },
+                "are-parts-provided": {
+                  "$ref": "#/definitions/are-parts-provided"
+                },
+                "is-discontinued-partner": {
+                  "$ref": "#/definitions/is-discontinued-partner"
+                },
+                "employee-override-refund-access": {
+                  "$ref": "#/definitions/employee-override-refund-access"
+                },
+                "item-total-revenue": {
+                  "$ref": "#/definitions/item-total-revenue"
+                },
+                "has-payment-method": {
+                  "$ref": "#/definitions/has-payment-method"
+                },
+                "is-specialized-ssc": {
+                  "$ref": "#/definitions/is-specialized-ssc"
+                },
+                "is-heavy-item-european-supplier": {
+                  "$ref": "#/definitions/is-heavy-item-european-supplier"
+                },
+                "is-item-post-2-year": {
+                  "$ref": "#/definitions/is-item-post-2-years"
+                },
+                "is-item-post-1-year": {
+                  "$ref": "#/definitions/is-item-post-1-year"
+                },
+                "is-eu-order": {
+                  "$ref": "#/definitions/is-eu-order"
+                },
+                "is-outside-supplier-warranty": {
+                  "$ref": "#/definitions/is-outside-supplier-warranty"
+                },
+                "is-employee-manager": {
+                  "$ref": "#/definitions/is-employee-manager"
+                },
+                "is-general-electric-item": {
+                  "$ref": "#/definitions/is-general-electric-item"
+                },
+                "is-ebay-gsp": {
+                  "$ref": "#/definitions/is-ebay-gsp"
+                },
+                "is-clearance-item": {
+                  "$ref": "#/definitions/is-clearance-item"
+                },
+                "is-supplier-adc-and-ltl-or-white-glove": {
+                  "$ref": "#/definitions/is-supplier-adc-and-ltl-or-white-glove"
+                },
+                "is-in-customers-possession": {
+                  "$ref": "#/definitions/is-in-customers-possession"
+                },
+                "does-supplier-handle-customer": {
+                  "$ref": "#/definitions/does-supplier-handle-customer"
+                },
+                "override-supplier-handles-customer": {
+                  "$ref": "#/definitions/override-supplier-handles-customer"
+                }
+              }
+            }
+          }
+        },
+        "damage-and-defect": {
+          "type": "object",
+          "required": [
+            "$metrics"
+          ],
+          "properties": {
+            "$evaluators": {
+              "type": "array",
+              "title": "The $evaluator Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "availability-evaluator",
+                  "damage-extent",
+                  "damage-severity",
+                  "warm-transfer",
+                  "poor-performer"
+                ]
+              }
+            },
+            "$defaultResolutionRank": {
+              "type": "array",
+              "title": "The $evaluator Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "send-parts",
+                  "provide-repair",
+                  "provide-discount",
+                  "send-unit",
+                  "provide-refund",
+                  "warm-transfer"
+                ]
+              }
+            },
+            "$metrics": {
+              "type": "object",
+              "required": [
+                "does-supplier-handle-customer",
+                "override-supplier-handles-customer",
+                "is-in-customers-possession",
+                "is-supplier-adc-and-ltl-or-white-glove",
+                "is-clearance-item",
+                "is-ebay-gsp",
+                "is-general-electric-item",
+                "is-employee-manager",
+                "is-outside-supplier-warranty",
+                "is-eu-order",
+                "is-item-post-1-year",
+                "is-item-post-2-years",
+                "is-heavy-item-european-supplier",
+                "is-specialized-ssc",
+                "has-payment-method",
+                "item-total-revenue",
+                "employee-override-refund-access",
+                "is-discontinued-partner",
+                "are-parts-provided",
+                "is-parts-eligible-for-custom-integration",
+                "is-discontinued",
+                "is-castlegate-only-item",
+                "is-out-of-stock-item",
+                "is-google-express-partner",
+                "has-no-live-source-sku",
+                "is-combined-kit-sku",
+                "is-replacement-eligible-for-custom-integration",
+                "employee-repair-resolution-access",
+                "is-repair-eligible-for-custom-integration",
+                "is-repairable-product-class",
+                "does-wholesale-price-meet-repair-minimum",
+                "does-partner-allow-discount",
+                "damage-extent",
+                "is-lighting-variant",
+                "damage-severity",
+                "is-send-parts-poor-performer"
+              ],
+              "properties": {
+                "is-send-parts-poor-performer": {
+                  "$ref": "#/definitions/is-send-parts-poor-performer"
+                },
+                "damage-severity": {
+                  "$ref": "#/definitions/damage-severity"
+                },
+                "is-lighting-variant": {
+                  "$ref": "#/definitions/is-lighting-variant"
+                },
+                "damage-extent": {
+                  "$ref": "#/definitions/damage-extent"
+                },
+                "does-partner-allow-discount": {
+                  "$ref": "#/definitions/does-partner-allow-discount"
+                },
+                "does-wholesale-price-meet-repair-minimum": {
+                  "$ref": "#/definitions/does-wholesale-price-meet-repair-minimum"
+                },
+                "is-repairable-product-class": {
+                  "$ref": "#/definitions/is-repairable-product-class"
+                },
+                "is-repair-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-repair-eligible-for-custom-integration"
+                },
+                "employee-repair-resolution-access": {
+                  "$ref": "#/definitions/employee-repair-resolution-access"
+                },
+                "is-replacement-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-replacement-eligible-for-custom-integration"
+                },
+                "is-combined-kit-sku": {
+                  "$ref": "#/definitions/is-combined-kit-sku"
+                },
+                "has-no-live-source-sku": {
+                  "$ref": "#/definitions/has-no-live-source-sku"
+                },
+                "is-google-express-partner": {
+                  "$ref": "#/definitions/is-google-express-partner"
+                },
+                "is-out-of-stock-item": {
+                  "$ref": "#/definitions/is-out-of-stock-item"
+                },
+                "is-castlegate-only-item": {
+                  "$ref": "#/definitions/is-castlegate-only-item"
+                },
+                "is-discontinued": {
+                  "$ref": "#/definitions/is-discontinued"
+                },
+                "is-parts-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-parts-eligible-for-custom-integration"
+                },
+                "are-parts-provided": {
+                  "$ref": "#/definitions/are-parts-provided"
+                },
+                "is-discontinued-partner": {
+                  "$ref": "#/definitions/is-discontinued-partner"
+                },
+                "employee-override-refund-access": {
+                  "$ref": "#/definitions/employee-override-refund-access"
+                },
+                "item-total-revenue": {
+                  "$ref": "#/definitions/item-total-revenue"
+                },
+                "has-payment-method": {
+                  "$ref": "#/definitions/has-payment-method"
+                },
+                "is-specialized-ssc": {
+                  "$ref": "#/definitions/is-specialized-ssc"
+                },
+                "is-heavy-item-european-supplier": {
+                  "$ref": "#/definitions/is-heavy-item-european-supplier"
+                },
+                "is-item-post-2-year": {
+                  "$ref": "#/definitions/is-item-post-2-years"
+                },
+                "is-item-post-1-year": {
+                  "$ref": "#/definitions/is-item-post-1-year"
+                },
+                "is-eu-order": {
+                  "$ref": "#/definitions/is-eu-order"
+                },
+                "is-outside-supplier-warranty": {
+                  "$ref": "#/definitions/is-outside-supplier-warranty"
+                },
+                "is-employee-manager": {
+                  "$ref": "#/definitions/is-employee-manager"
+                },
+                "is-general-electric-item": {
+                  "$ref": "#/definitions/is-general-electric-item"
+                },
+                "is-ebay-gsp": {
+                  "$ref": "#/definitions/is-ebay-gsp"
+                },
+                "is-clearance-item": {
+                  "$ref": "#/definitions/is-clearance-item"
+                },
+                "is-supplier-adc-and-ltl-or-white-glove": {
+                  "$ref": "#/definitions/is-supplier-adc-and-ltl-or-white-glove"
+                },
+                "is-in-customers-possession": {
+                  "$ref": "#/definitions/is-in-customers-possession"
+                },
+                "does-supplier-handle-customer": {
+                  "$ref": "#/definitions/does-supplier-handle-customer"
+                },
+                "override-supplier-handles-customer": {
+                  "$ref": "#/definitions/override-supplier-handles-customer"
+                }
+              }
+            }
+          }
+        },
+        "wims": {
+          "type": "object",
+          "required": [
+            "$metrics"
+          ],
+          "properties": {
+            "$evaluators": {
+              "type": "array",
+              "title": "The $evaluator Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "availability-evaluator",
+                  "warm-transfer",
+                  "product-tracking-status"
+                ]
+              }
+            },
+            "$defaultResolutionRank": {
+              "type": "array",
+              "title": "The $evaluator Schema",
+              "minItems": 1,
+              "uniqueItems": true,
+              "additionalItems": false,
+              "items": {
+                "type": "string",
+                "title": "The Items Schema",
+                "enum": [
+                  "all-set",
+                  "change-shipping-address-or-info",
+                  "open-a-ticket",
+                  "internal-escalation-eu-only",
+                  "send-parts",
+                  "provide-discount",
+                  "send-unit",
+                  "cancel",
+                  "return",
+                  "provide-refund",
+                  "warm-transfer"
+                ]
+              }
+            },
+            "$metrics": {
+              "type": "object",
+              "required": [
+                "does-supplier-handle-customer",
+                "override-supplier-handles-customer",
+                "is-in-customers-possession",
+                "is-supplier-adc-and-ltl-or-white-glove",
+                "is-clearance-item",
+                "is-ebay-gsp",
+                "is-general-electric-item",
+                "is-employee-manager",
+                "is-outside-supplier-warranty",
+                "is-eu-order",
+                "is-item-post-1-year",
+                "is-item-post-2-years",
+                "is-heavy-item-european-supplier",
+                "is-specialized-ssc",
+                "has-payment-method",
+                "item-total-revenue",
+                "employee-override-refund-access",
+                "is-discontinued-partner",
+                "are-parts-provided",
+                "is-parts-eligible-for-custom-integration",
+                "is-discontinued",
+                "is-castlegate-only-item",
+                "is-out-of-stock-item",
+                "is-google-express-partner",
+                "has-no-live-source-sku",
+                "is-combined-kit-sku",
+                "is-replacement-eligible-for-custom-integration",
+                "employee-repair-resolution-access",
+                "is-repair-eligible-for-custom-integration",
+                "is-repairable-product-class",
+                "does-wholesale-price-meet-repair-minimum",
+                "does-partner-allow-discount",
+                "tracking-status",
+                "is-backordered",
+                "backorder-alert"
+              ],
+              "properties": {
+                "backorder-alert": {
+                  "$ref": "#/definitions/backorder-alert"
+                },
+                "is-backordered": {
+                  "$ref": "#/definitions/is-backordered"
+                },
+                "tracking-status": {
+                  "$ref": "#/definitions/tracking-status"
+                },
+                "does-partner-allow-discount": {
+                  "$ref": "#/definitions/does-partner-allow-discount"
+                },
+                "does-wholesale-price-meet-repair-minimum": {
+                  "$ref": "#/definitions/does-wholesale-price-meet-repair-minimum"
+                },
+                "is-repairable-product-class": {
+                  "$ref": "#/definitions/is-repairable-product-class"
+                },
+                "is-repair-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-repair-eligible-for-custom-integration"
+                },
+                "employee-repair-resolution-access": {
+                  "$ref": "#/definitions/employee-repair-resolution-access"
+                },
+                "is-replacement-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-replacement-eligible-for-custom-integration"
+                },
+                "is-combined-kit-sku": {
+                  "$ref": "#/definitions/is-combined-kit-sku"
+                },
+                "has-no-live-source-sku": {
+                  "$ref": "#/definitions/has-no-live-source-sku"
+                },
+                "is-google-express-partner": {
+                  "$ref": "#/definitions/is-google-express-partner"
+                },
+                "is-out-of-stock-item": {
+                  "$ref": "#/definitions/is-out-of-stock-item"
+                },
+                "is-castlegate-only-item": {
+                  "$ref": "#/definitions/is-castlegate-only-item"
+                },
+                "is-discontinued": {
+                  "$ref": "#/definitions/is-discontinued"
+                },
+                "is-parts-eligible-for-custom-integration": {
+                  "$ref": "#/definitions/is-parts-eligible-for-custom-integration"
+                },
+                "are-parts-provided": {
+                  "$ref": "#/definitions/are-parts-provided"
+                },
+                "is-discontinued-partner": {
+                  "$ref": "#/definitions/is-discontinued-partner"
+                },
+                "employee-override-refund-access": {
+                  "$ref": "#/definitions/employee-override-refund-access"
+                },
+                "item-total-revenue": {
+                  "$ref": "#/definitions/item-total-revenue"
+                },
+                "has-payment-method": {
+                  "$ref": "#/definitions/has-payment-method"
+                },
+                "is-specialized-ssc": {
+                  "$ref": "#/definitions/is-specialized-ssc"
+                },
+                "is-heavy-item-european-supplier": {
+                  "$ref": "#/definitions/is-heavy-item-european-supplier"
+                },
+                "is-item-post-2-year": {
+                  "$ref": "#/definitions/is-item-post-2-years"
+                },
+                "is-item-post-1-year": {
+                  "$ref": "#/definitions/is-item-post-1-year"
+                },
+                "is-eu-order": {
+                  "$ref": "#/definitions/is-eu-order"
+                },
+                "is-outside-supplier-warranty": {
+                  "$ref": "#/definitions/is-outside-supplier-warranty"
+                },
+                "is-employee-manager": {
+                  "$ref": "#/definitions/is-employee-manager"
+                },
+                "is-general-electric-item": {
+                  "$ref": "#/definitions/is-general-electric-item"
+                },
+                "is-ebay-gsp": {
+                  "$ref": "#/definitions/is-ebay-gsp"
+                },
+                "is-clearance-item": {
+                  "$ref": "#/definitions/is-clearance-item"
+                },
+                "is-supplier-adc-and-ltl-or-white-glove": {
+                  "$ref": "#/definitions/is-supplier-adc-and-ltl-or-white-glove"
+                },
+                "is-in-customers-possession": {
+                  "$ref": "#/definitions/is-in-customers-possession"
+                },
+                "does-supplier-handle-customer": {
+                  "$ref": "#/definitions/does-supplier-handle-customer"
+                },
+                "override-supplier-handles-customer": {
+                  "$ref": "#/definitions/override-supplier-handles-customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "damage-extent": {
+      "type": "integer"
+    },
+    "is-lighting-variant": {
+      "type": "boolean"
+    },
+    "damage-severity": {
+      "type": "integer"
+    },
+    "is-send-parts-poor-performer": {
+      "type": "boolean"
+    },
+    "does-supplier-handle-customer": {
+      "type": "boolean"
+    },
+    "override-supplier-handles-customer": {
+      "type": "boolean"
+    },
+    "is-in-customers-possession": {
+      "type": "boolean"
+    },
+    "is-supplier-adc-and-ltl-or-white-glove": {
+      "type": "boolean"
+    },
+    "is-clearance-item": {
+      "type": "boolean"
+    },
+    "is-employee-manager": {
+      "type": "boolean"
+    },
+    "is-outside-supplier-warranty": {
+      "type": "boolean"
+    },
+    "is-item-post-1-year": {
+      "type": "boolean"
+    },
+    "is-item-post-2-years": {
+      "type": "boolean"
+    },
+    "is-eu-order": {
+      "type": "boolean"
+    },
+    "is-ebay-gsp": {
+      "type": "boolean"
+    },
+    "is-general-electric-item": {
+      "type": "boolean"
+    },
+    "are-parts-provided": {
+      "type": "boolean"
+    },
+    "is-hardware-pack-provided": {
+      "type": "boolean"
+    },
+    "is-parts-eligible-for-custom-integration": {
+      "type": "boolean"
+    },
+    "is-discontinued": {
+      "type": "boolean"
+    },
+    "is-castlegate-only-item": {
+      "type": "boolean"
+    },
+    "is-out-of-stock-item": {
+      "type": "boolean"
+    },
+    "is-google-express-partner": {
+      "type": "boolean"
+    },
+    "has-no-live-source-sku": {
+      "type": "boolean"
+    },
+    "is-combined-kit-sku": {
+      "type": "boolean"
+    },
+    "is-heavy-item-european-supplier": {
+      "type": "boolean"
+    },
+    "is-specialized-ssc": {
+      "type": "boolean"
+    },
+    "is-replacement-eligible-for-custom-integration": {
+      "type": "boolean"
+    },
+    "is-discontinued-partner": {
+      "type": "boolean"
+    },
+    "has-payment-method": {
+      "type": "boolean"
+    },
+    "item-total-revenue": {
+      "type": "number"
+    },
+    "employee-override-refund-access": {
+      "type": "boolean"
+    },
+    "employee-repair-resolution-access": {
+      "type": "boolean"
+    },
+    "is-repair-eligible-for-custom-integration": {
+      "type": "boolean"
+    },
+    "is-repairable-product-class": {
+      "type": "boolean"
+    },
+    "does-wholesale-price-meet-repair-minimum": {
+      "type": "boolean"
+    },
+    "does-partner-allow-discount": {
+      "type": "boolean"
+    },
+    "tracking-status": {
+      "type": "string",
+      "enum": [
+        "not-shipped",
+        "shipped-not-scanned-within-48-hours",
+        "shipped-not-scanned-after-48-hours",
+        "shipped-not-scanned-no-shipping-timestamp",
+        "in-transit",
+        "delivered-within-48-hours",
+        "delivered-after-48-hours",
+        "delivered-no-delivery-timestamp",
+        "other"
+      ]
+    },
+    "is-backordered": {
+      "type": "boolean"
+    },
+    "backorder-alert": {
+      "enum": [
+        "backorder-not-severe",
+        "extended-backorder",
+        "multiple-backorder",
+        null
+      ]
+    },
+    "wizard-path": {
+      "enum": [
+        null,
+        "different-item",
+        "wrong-option",
+        "website"
+      ]
+    },
+    "wrong-options-data": {
+      "$ref": "#/definitions/wrong-options-data"
+    },
+    "is-same-item": {
+      "type": "boolean"
+    },
+    "part-number": {
+      "type": "string"
+    },
+    "manufacturer-part-number": {
+      "type": "string"
+    },
+    "supplier-part-number": {
+      "type": "string"
+    },
+    "white-label-part-number": {
+      "type": "string"
+    },
+    "product-aspects": {
+      "$ref": "#/definitions/product-aspects"
+    },
+    "cant-verify": {
+      "type": "boolean"
+    },
+    "product-aspects": {
+      "title": "Product Aspects",
+      "description": "Product aspect metric. Defined to accept array of strings which can take any of these values (color, size-or-weight, material, features, assembly, items-included, overall-quality)",
+      "type": "array",
+      "title": "Schema for product-aspects metric",
+      "maxItems": 4,
+      "minItems": 1,
+      "uniqueItems": true,
+      "additionalItems": false,
+      "items": {
+        "type": "string",
+        "enum": [
+          "color",
+          "size-or-weight",
+          "material",
+          "features",
+          "assembly",
+          "Items-included",
+          "overall-quality"
+        ]
+      }
+    },
+    "wrong-options-data": {
+      "title": "The wrong-options-data Schema",
+      "description": "",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "additionalItems": true,
+      "items": {
+        "$ref": "#/definitions/wrong-options-attributes"
+      }
+    },
+    "wrong-options-attributes": {
+      "type": "object",
+      "title": "The Items Schema",
+      "required": [
+        "originalOptionId",
+        "selectedOptionId"
+      ],
+      "properties": {
+        "originalOptionId": {
+          "type": "string"
+        },
+        "selectedOptionId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

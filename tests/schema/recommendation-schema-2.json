@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "required": ["$namespace", "$issues"],
+  "properties": {
+    "$namespace": {
+      "type": "string",
+      "const": "wizards"
+    },
+    "$resolutions": {
+      "$ref": "#/definitions/resolutions"
+    },
+    "$issues": {
+      "type": "array",
+      "anyOf": [
+        {
+          "damage-and-defect":{
+            "type": "object",
+            "required": ["damage-and-defect-required-metrics"],
+            "damage-and-defect-evaluators": {
+              "enum": [
+                "availability-evaluator",
+                "damage-extent",
+                "damage-severity",
+                "warm-transfer",
+                "poor-performer"
+              ]
+            },
+            "damage-and-defect-resolution-rank": {
+              "enum": [
+                "send-parts",
+                "provide-repair",
+                "provide-discount",
+                "send-unit",
+                "provide-refund",
+                "warm-transfer"
+              ]
+            },
+            "damage-and-defect-required-metrics": {
+              "type": "array",
+              "items": [
+                {"$ref": "#/definitions/does-supplier-handle-customer"},
+                {"$ref": "#/definitions/override-supplier-handles-customer"},
+                {"$ref": "#/definitions/is-in-customers-possession"}
+              ]
+            }
+          }
+        },
+        {
+          "wims": {
+            "type": "object",
+            "required": ["required-metrics"],
+            "properties": {
+              "wims-evaluators": {
+                "enum": [
+                  "availability-evaluator",
+                  "warm-transfer",
+                  "product-tracking-status"
+                ]
+              },
+              "wims-resolution-rank": {
+                "enum": [
+                  "all-set",
+                  "change-shipping-address-or-info",
+                  "open-a-ticket",
+                  "internal-escalation-eu-only",
+                  "send-parts",
+                  "provide-discount",
+                  "send-unit",
+                  "cancel",
+                  "return",
+                  "provide-refund",
+                  "warm-transfer"
+                ]
+              },
+              "required-metrics" : {
+                "type": "array",
+                "items": {
+                  "required":[
+                    "is-employee-manager"
+                  ],
+                  "properties": {
+                    "$ref": "#/definitions/is-employee-manager",
+                    "$ref": "#/definitions/is-outside-supplier-warranty",
+                    "$ref": "#/definitions/is-item-post-1-year"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "does-supplier-handle-customer": { "type": "boolean" },
+    "override-supplier-handles-customer": { "type": "boolean" },
+    "is-in-customers-possession": { "type": "boolean" },
+    "is-employee-manager": { "type": "boolean" },
+    "is-outside-supplier-warranty": { "type": "boolean" },
+    "is-item-post-1-year": {
+      "type": "boolean"
+    },
+    "resolutions" : {
+      "enum": [
+        "all-set",
+        "change-shipping-address-or-info",
+        "open-a-ticket",
+        "internal-escalation-eu-only",
+        "send-parts",
+        "provide-repair",
+        "provide-discount",
+        "send-unit",
+        "provide-refund",
+        "return",
+        "cancel",
+        "warm-transfer"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "issue": {
+      "type": "string"
+    },
+    "metrics": {
+      "type": "string",
+      "enum": [
+        "all-set",
+        "change-shipping-address-or-info",
+        "open-a-ticket",
+        "internal-escalation-eu-only",
+        "send-parts",
+        "provide-discount",
+        "send-unit",
+        "cancel",
+        "return",
+        "provide-refund",
+        "warm-transfer"
+      ]
+    }
+  }
+}
